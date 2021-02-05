@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: hello-fun
+  name: hello-fun-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hello-fun
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hello-fun
+    spec:
+      containers:
+      - image: hello-fun:0.0.1-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: k8sdev
+        livenessProbe:
+          initialDelaySeconds: 60
+          httpGet:
+            path: /actuator/info
+            port: 8080
+        name: app
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          periodSeconds: 3
+          failureThreshold: 20
+          httpGet:
+            path: /actuator/health
+            port: 8080
+
+
