@@ -75,7 +75,7 @@ $ ./bin/install-serverless.sh
 
 # Deployment and Serverless use-cases
 
-To start deploying without having to build the images, all have been made in DockerHub:
+To start deploying without having to build the images, all have been made available in DockerHub:
 ```shell
 $ docker pull triathlonguy/hello-function:jvm
 $ docker pull triathlonguy/hello-function:native
@@ -146,7 +146,7 @@ hello-function         hello-function       http://hello-function.hello-function
 ...
 
 # cleanup
-$ k delete -f platform/knative/kubernetes/service.yml
+$ kubectl delete -f platform/knative/kubernetes/service.yml
 ```
 
 ## Deployment via Knative `kn` CLI

@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: hello-fun
-  name: hello-fun-service
+    app.kubernetes.io/name: hello-function
+  name: hello-function-service
 spec:
   ports:
   - port: 80
     targetPort: 8080
   selector:
-    app.kubernetes.io/name: hello-fun
+    app.kubernetes.io/name: hello-function
   sessionAffinity: None
   type: LoadBalancer
